@@ -5,11 +5,11 @@ import {
   formatDate,
   getInitials,
   mediaTypeMeta,
+  statusMeta,
   statusOptions,
 } from "../lib/cine-track";
 import RatingPill from "./RatingPill";
 import StatusBadge from "./StatusBadge";
-import DropdownSelect from "./DropdownSelect";
 
 interface MovieCardProps {
   item: CineItem;
@@ -27,7 +27,7 @@ export default function MovieCard({
   const mediaMeta = mediaTypeMeta[item.type as MediaType];
 
   return (
-    <article className="group relative overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(31,31,44,0.92),rgba(13,13,18,0.98))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.4)] transition duration-300 hover:-translate-y-1.5 hover:border-[#7c3aed]/35 hover:shadow-[0_32px_100px_rgba(124,58,237,0.2)]">
+    <article className="group relative overflow-visible rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(31,31,44,0.92),rgba(13,13,18,0.98))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.4)] transition duration-300 hover:-translate-y-1.5 hover:border-[#7c3aed]/35 hover:shadow-[0_32px_100px_rgba(124,58,237,0.2)]">
       <div className="absolute inset-x-10 top-0 h-24 rounded-full bg-[#7c3aed]/15 blur-3xl transition duration-300 group-hover:bg-[#a855f7]/20" />
 
       <div className="relative flex h-full flex-col gap-5">
@@ -96,15 +96,41 @@ export default function MovieCard({
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <div className="min-w-44 flex-1">
-                <DropdownSelect
-                  label="Status"
-                  value={item.status}
-                  options={statusOptions}
-                  onChange={(status) => onStatusChange(item.id, status as Status)}
-                  buttonClassName="min-h-14"
-                  labelClassName="text-white/40"
-                />
+              <div className="min-w-56 flex-1">
+                <div className="space-y-3">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/40">
+                    Status
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {statusOptions.map((option) => {
+                      const isActive = option.value === item.status;
+                      const meta = statusMeta[option.value];
+
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          aria-pressed={isActive}
+                          onClick={() => onStatusChange(item.id, option.value as Status)}
+                          className={`rounded-[18px] border px-4 py-3 text-left text-sm font-semibold transition duration-200 ${
+                            isActive
+                              ? `${meta.chipClassName} border-white/12`
+                              : "border-white/10 bg-white/5 text-white/72 hover:border-white/20 hover:bg-white/8 hover:text-white"
+                          }`}
+                        >
+                          <span className="flex items-center gap-2">
+                            <span
+                              className={`h-2 w-2 rounded-full ${
+                                isActive ? meta.dotClassName : "bg-white/22"
+                              }`}
+                            />
+                            {option.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
               <button
