@@ -231,6 +231,18 @@ export default function Home() {
     formModal.mode === "edit" && formModal.item
       ? getFormValues(formModal.item)
       : EMPTY_FORM_VALUES;
+  const hasActiveFilters =
+    statusFilter !== "all" ||
+    typeFilter !== "all" ||
+    sortBy !== "updated-desc" ||
+    query.trim().length > 0;
+
+  const resetFilters = () => {
+    setQuery("");
+    setStatusFilter("all");
+    setTypeFilter("all");
+    setSortBy("updated-desc");
+  };
 
   return (
     <>
@@ -373,9 +385,11 @@ export default function Home() {
             statusFilter={statusFilter}
             typeFilter={typeFilter}
             sortBy={sortBy}
+            hasActiveFilters={hasActiveFilters}
             onStatusFilterChange={setStatusFilter}
             onTypeFilterChange={setTypeFilter}
             onSortChange={setSortBy}
+            onResetFilters={resetFilters}
           />
 
           {sortedItems.length ? (

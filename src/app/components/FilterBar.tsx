@@ -8,9 +8,11 @@ interface FilterBarProps {
   statusFilter: Status | "all";
   typeFilter: MediaType | "all";
   sortBy: SortOption;
+  hasActiveFilters: boolean;
   onStatusFilterChange: (value: Status | "all") => void;
   onTypeFilterChange: (value: MediaType | "all") => void;
   onSortChange: (value: SortOption) => void;
+  onResetFilters: () => void;
 }
 
 function FilterSelect<T extends string>({
@@ -42,9 +44,11 @@ export default function FilterBar({
   statusFilter,
   typeFilter,
   sortBy,
+  hasActiveFilters,
   onStatusFilterChange,
   onTypeFilterChange,
   onSortChange,
+  onResetFilters,
 }: FilterBarProps) {
   return (
     <section className="relative z-30 rounded-[28px] border border-white/8 bg-[rgba(16,16,24,0.82)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
@@ -61,7 +65,7 @@ export default function FilterBar({
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-4">
           <FilterSelect
             label="Status"
             value={statusFilter}
@@ -80,6 +84,19 @@ export default function FilterBar({
             options={sortOptions}
             onChange={onSortChange}
           />
+          <div className="flex min-w-40 flex-col gap-2">
+            <span className="text-xs font-medium uppercase tracking-[0.24em] text-white/45">
+              Reset
+            </span>
+            <button
+              type="button"
+              onClick={onResetFilters}
+              disabled={!hasActiveFilters}
+              className="min-h-14 rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:border-white/20 hover:bg-white/8 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/10 disabled:hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))]"
+            >
+              Reset filters
+            </button>
+          </div>
         </div>
       </div>
     </section>
