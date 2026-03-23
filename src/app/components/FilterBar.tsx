@@ -1,6 +1,7 @@
 import { MediaType } from "../types/media-type";
 import { Status } from "../types/status";
 import { SortOption, mediaTypeOptions, sortOptions, statusOptions } from "../lib/cine-track";
+import DropdownSelect from "./DropdownSelect";
 
 interface FilterBarProps {
   totalItems: number;
@@ -24,22 +25,15 @@ function FilterSelect<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <label className="flex min-w-44 flex-col gap-2">
-      <span className="text-xs font-medium uppercase tracking-[0.24em] text-white/45">
-        {label}
-      </span>
-      <select
+    <div className="min-w-44">
+      <DropdownSelect
+        label={label}
         value={value}
-        onChange={(event) => onChange(event.target.value as T)}
-        className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition hover:border-white/20 focus:border-[#a855f7]"
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value} className="bg-[#12121a]">
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </label>
+        options={options}
+        onChange={onChange}
+        buttonClassName="min-h-14"
+      />
+    </div>
   );
 }
 

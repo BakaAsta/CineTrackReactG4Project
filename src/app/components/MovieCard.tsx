@@ -9,6 +9,7 @@ import {
 } from "../lib/cine-track";
 import RatingPill from "./RatingPill";
 import StatusBadge from "./StatusBadge";
+import DropdownSelect from "./DropdownSelect";
 
 interface MovieCardProps {
   item: CineItem;
@@ -95,28 +96,16 @@ export default function MovieCard({
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <label className="flex min-w-44 flex-1 items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/55">
-                <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/40">
-                  Status
-                </span>
-                <select
+              <div className="min-w-44 flex-1">
+                <DropdownSelect
+                  label="Status"
                   value={item.status}
-                  onChange={(event) =>
-                    onStatusChange(item.id, event.target.value as Status)
-                  }
-                  className="w-full bg-transparent text-sm font-medium text-white outline-none"
-                >
-                  {statusOptions.map((option) => (
-                    <option
-                      key={option.value}
-                      value={option.value}
-                      className="bg-[#12121a]"
-                    >
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  options={statusOptions}
+                  onChange={(status) => onStatusChange(item.id, status as Status)}
+                  buttonClassName="min-h-14"
+                  labelClassName="text-white/40"
+                />
+              </div>
 
               <button
                 onClick={() => onEdit(item)}

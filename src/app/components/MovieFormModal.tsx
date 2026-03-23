@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MovieFormValues, statusOptions } from "../lib/cine-track";
 import { MediaType } from "../types/media-type";
 import { Status } from "../types/status";
+import DropdownSelect from "./DropdownSelect";
 
 interface MovieFormModalProps {
   open: boolean;
@@ -75,50 +76,36 @@ export default function MovieFormModal({
           </label>
 
           <div className="grid gap-5 md:grid-cols-2">
-            <label className="grid gap-2">
+            <div className="grid gap-2">
               <span className="text-sm font-medium text-white/78">Format</span>
-              <select
+              <DropdownSelect
                 value={formValues.type}
-                onChange={(event) =>
+                options={[
+                  { value: "movie", label: "Movie" },
+                  { value: "series", label: "Series" },
+                ]}
+                onChange={(value) =>
                   setFormValues((current) => ({
                     ...current,
-                    type: event.target.value as MediaType,
+                    type: value as MediaType,
                   }))
                 }
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-[#a855f7]"
-              >
-                <option value="movie" className="bg-[#12121a]">
-                  Movie
-                </option>
-                <option value="series" className="bg-[#12121a]">
-                  Series
-                </option>
-              </select>
-            </label>
+              />
+            </div>
 
-            <label className="grid gap-2">
+            <div className="grid gap-2">
               <span className="text-sm font-medium text-white/78">Status</span>
-              <select
+              <DropdownSelect
                 value={formValues.status}
-                onChange={(event) =>
+                options={statusOptions}
+                onChange={(value) =>
                   setFormValues((current) => ({
                     ...current,
-                    status: event.target.value as Status,
+                    status: value as Status,
                   }))
                 }
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-[#a855f7]"
-              >
-                {statusOptions.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                    className="bg-[#12121a]"
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+              />
+            </div>
           </div>
 
           <label className="grid gap-3">
