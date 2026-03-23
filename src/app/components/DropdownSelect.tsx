@@ -62,7 +62,7 @@ export default function DropdownSelect<T extends string>({
   }, []);
 
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className={`relative ${open ? "z-50" : "z-10"}`}>
       {label ? (
         <span
           className={`mb-2 block text-xs font-medium uppercase tracking-[0.24em] text-white/45 ${labelClassName}`}
@@ -100,7 +100,7 @@ export default function DropdownSelect<T extends string>({
 
       {open ? (
         <div
-          className={`absolute left-0 right-0 top-[calc(100%+0.75rem)] z-40 overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,22,31,0.98),rgba(11,11,15,0.98))] p-2 shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_0_1px_rgba(168,85,247,0.08)] backdrop-blur-xl ${menuClassName}`}
+          className={`absolute left-0 right-0 top-[calc(100%+0.75rem)] z-[70] overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,22,31,0.98),rgba(11,11,15,0.98))] p-2 shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_0_1px_rgba(168,85,247,0.08)] backdrop-blur-xl ${menuClassName}`}
         >
           <div
             aria-hidden="true"

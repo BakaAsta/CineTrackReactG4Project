@@ -47,7 +47,7 @@ export default function FilterBar({
   onSortChange,
 }: FilterBarProps) {
   return (
-    <section className="rounded-[28px] border border-white/8 bg-[rgba(16,16,24,0.82)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+    <section className="relative z-30 rounded-[28px] border border-white/8 bg-[rgba(16,16,24,0.82)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#a855f7]">
