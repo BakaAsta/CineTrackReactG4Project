@@ -1,0 +1,58 @@
+import { CineItem } from "../models/cine-item";
+
+export const cineItems: CineItem[] = [
+  {
+    id: 1,
+    title: "Dune: Part Two",
+    type: "movie",
+    status: "watching",
+    rating: 9,
+    createdAt: new Date("2026-03-04T21:30:00"),
+    updatedAt: new Date("2026-03-22T19:15:00"),
+  },
+  {
+    id: 2,
+    title: "Severance",
+    type: "series",
+    status: "to-watch",
+    rating: 8,
+    createdAt: new Date("2026-02-18T18:00:00"),
+    updatedAt: new Date("2026-03-17T10:45:00"),
+  },
+  {
+    id: 3,
+    title: "Blade Runner 2049",
+    type: "movie",
+    status: "completed",
+    rating: 10,
+    createdAt: new Date("2026-01-09T12:15:00"),
+    updatedAt: new Date("2026-03-03T23:40:00"),
+  },
+  {
+    id: 4,
+    title: "The Bear",
+    type: "series",
+    status: "watching",
+    rating: 8,
+    createdAt: new Date("2026-03-08T08:20:00"),
+    updatedAt: new Date("2026-03-20T22:10:00"),
+  },
+  {
+    id: 5,
+    title: "Rebel Moon",
+    type: "movie",
+    status: "dropped",
+    rating: 4,
+    createdAt: new Date("2026-02-03T16:40:00"),
+    updatedAt: new Date("2026-02-11T21:00:00"),
+  },
+  {
+    id: 6,
+    title: "Arcane",
+    type: "series",
+    status: "completed",
+    rating: 9,
+    createdAt: new Date("2026-01-22T11:35:00"),
+    updatedAt: new Date("2026-03-21T20:05:00"),
+  },
+];
