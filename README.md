@@ -60,6 +60,19 @@ Les fichiers suivants ne servent pas au projet et peuvent etre supprimes ou igno
 
 Le depot est maintenant nettoye de ses assets de template inutiles. Il reste uniquement le favicon du projet et les fichiers necessaires au fonctionnement de l'application.
 
+## Utilisation de l'IA
+
+L'IA a ete utilisee sur ce projet de maniere importante pour gagner du temps et aller plus vite sur la realisation.
+
+Concretement, elle m'a aide pour :
+
+- ameliorer l'interface et la rendre plus propre visuellement
+- faire des audits sur le cote UX / UI
+- m'aider a verifier certains points avec des tests
+- accelerer une grande partie de la production du code
+
+Je precise cependant que j'avais deja une bonne base en React avant de commencer, et que je comprends le code produit. L'IA a servi de support pour aller plus vite et structurer le projet, pas pour remplacer la comprehension du travail realise.
+
 ## Structure
 
 - `src/app/page.tsx` : page principale
@@ -67,4 +80,3 @@ Le depot est maintenant nettoye de ses assets de template inutiles. Il reste uni
 - `src/app/components/` : composants UI
 - `src/app/data/` : donnees de depart
 - `src/app/lib/` : logique metier et helpers
-
