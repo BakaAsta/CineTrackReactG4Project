@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CineTrack
 
-## Getting Started
+CineTrack est une application Next.js 16 en `App Router` pour gerer une bibliotheque de films et series.
 
-First, run the development server:
+## Pre-requis
+
+- Node.js `20.9+`
+- `npm`
+
+## Installation propre
+
+Le projet utilise `package-lock.json`, donc l'installation la plus propre est :
+
+```bash
+npm ci
+```
+
+`npm ci` installe exactement les versions verrouillees dans le lockfile.
+
+Si tu ajoutes ou modifies des dependances, utilise ensuite :
+
+```bash
+npm install <package>
+```
+
+## Lancer le projet
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensuite ouvre :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Commandes utiles
 
-## Learn More
+```bash
+npm run build
+npm run start
+npm run lint
+npm run lint:fix
+```
 
-To learn more about Next.js, take a look at the following resources:
+- `build` genere une version de production
+- `start` lance le serveur de production apres le build
+- `lint` verifie le code
+- `lint:fix` corrige automatiquement ce qui peut l'etre
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Nettoyage du depot
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Les fichiers suivants ne servent pas au projet et peuvent etre supprimes ou ignores :
 
-## Deploy on Vercel
+- `__MACOSX/`
+- `.next/`
+- `node_modules/`
+- les SVG de demo Next.js dans `public/` s'ils ne sont pas utilises
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Le depot est maintenant nettoye de ses assets de template inutiles. Il reste uniquement le favicon du projet et les fichiers necessaires au fonctionnement de l'application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Structure
+
+- `src/app/page.tsx` : page principale
+- `src/app/layout.tsx` : layout global et polices
+- `src/app/components/` : composants UI
+- `src/app/data/` : donnees de depart
+- `src/app/lib/` : logique metier et helpers
+
